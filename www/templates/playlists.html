@@ -1,0 +1,40 @@
+<ion-view view-title="Recipe">
+  <ion-content>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="letter">
+      </label>
+    </div>
+
+    <div class="card" ng-if="letter && result.length > 0">
+      <div class="item item-text-wrap card-if">
+        <h2 class="card-if-text">
+          <b>"{{letter}}"</b> kelimesine ait {{result.length}} sonuc bulundu.
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="card" ng-if="letter && result.length == 0">
+      <div class="item item-text-wrap">
+        <h2>
+          <b>"{{letter}}"</b> kelimesine ait sonuc bulunamadi.
+        </h2>
+      </div>
+    </div>
+
+
+    <div class="list">
+
+      <a class="item item-thumbnail-left" ng-repeat="recipe in recipes | filter: letter as result" href="#/app/playlists/{{recipe.id}}">
+        <img src="{{recipe.img}}">
+        <h2>{{recipe.name}}</h2>
+        <p>{{recipe.subtitle}}</p>
+      </a>
+
+  </div>
+
+  </ion-content>
+</ion-view>
